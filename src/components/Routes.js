@@ -5,8 +5,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Home from './HomePage/Home';
-import CreateRecipe from '../pages/CreateRecipe';
+import HomePage from './HomePage';
+import CreateRecipePage from './CreateRecipePage';
+import EditRecipePage from './EditRecipePage';
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -22,10 +23,13 @@ export default function Routes() {
     <Router>
       <Switch>
         <Route exact path="/">
-          <Home />
+          <HomePage />
         </Route>
         <Route path="/create">
-          <CreateRecipe />
+          <CreateRecipePage />
+        </Route>
+        <Route path="/edit">
+          <EditRecipePage />
         </Route>
       </Switch>
     </Router>
