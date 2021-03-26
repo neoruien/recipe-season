@@ -6,10 +6,10 @@ import {
     Link
 } from "react-router-dom";
 
-export default function EditRecipePage() {
+export default function ReadRecipePage() {
     return (
         <div>
-            <h2>Edit Recipe</h2>
+            <h2>Read Recipe</h2>
         </div>
     );
 }

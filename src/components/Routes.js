@@ -5,9 +5,15 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import HomePage from './HomePage';
 import CreateRecipePage from './CreateRecipePage';
-import EditRecipePage from './EditRecipePage';
+import ReadRecipePage from './ReadRecipePage';
+import UpdateRecipePage from "./UpdateRecipePage";
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -21,17 +27,30 @@ import EditRecipePage from './EditRecipePage';
 export default function Routes() {
   return (
     <Router>
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="#home">
+          React Bootstrap
+        </Navbar.Brand>
+      </Navbar>
       <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route path="/create">
-          <CreateRecipePage />
-        </Route>
-        <Route path="/edit">
-          <EditRecipePage />
-        </Route>
+        <Route exact path='/' component={HomePage} />
+        <Route path="/create-recipe" component={CreateRecipePage} />
+        <Route path="/read-recipe/:id" component={ReadRecipePage} />
+        <Route path="/update-recipe" component={UpdateRecipePage} />
       </Switch>
-    </Router>
+  </Router>
+    // <Router>
+    //   <Switch>
+    //     <Route exact path="/">
+    //       <HomePage />
+    //     </Route>
+    //     <Route path="/create">
+    //       <CreateRecipePage />
+    //     </Route>
+    //     <Route path="/edit">
+    //       <EditRecipePage />
+    //     </Route>
+    //   </Switch>
+    // </Router>
   );
 }
