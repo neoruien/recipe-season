@@ -1,18 +1,3 @@
-// import React, { Component } from 'react';
-// import {
-//     BrowserRouter as Router,
-//     Switch,
-//     Route,
-//     Link
-// } from "react-router-dom";
-
-// export default function UpdateRecipePage() {
-//     return (
-//         <div>
-//             <h2>Update Recipe</h2>
-//         </div>
-//     );
-// }
 import React, { Component } from "react";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
@@ -42,7 +27,7 @@ export default class EditRecipeComponent extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:4000/Recipes/update-recipe/' + this.props.match.params.id)
+    axios.get('http://localhost:4000/recipes/read-recipe/' + this.props.match.params.id)
       .then(res => {
         this.setState({
           title: res.data.title,
@@ -108,29 +93,63 @@ export default class EditRecipeComponent extends Component {
         console.log(error)
       })
 
-    // Redirect to Recipe List 
-    this.props.history.push('/recipe-list')
+    // Redirect to HomePage 
+    this.props.history.push('/')
   }
 
-
   render() {
-    return (<div className="form-wrapper">
+    return (<div class="form-wrapper">
       <Form onSubmit={this.onSubmit}>
-        <Form.Group controlId="Name">
+        {/* title */}
+        <Form.Group controlId="title">
           <Form.Label>Name</Form.Label>
-          <Form.Control type="text" value={this.state.name} onChange={this.onChangeRecipeName} />
+          <Form.Control type="text" value={this.state.title} onChange={this.onChangeTitle} placeholder="Enter recipe title"/>
         </Form.Group>
-
-        <Form.Group controlId="Email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" value={this.state.email} onChange={this.onChangeRecipeEmail} />
+        {/* image*/}
+        <Form.Group controlId="image">
+          <Form.Label>Image URL</Form.Label>
+          <Form.Control type="text" value={this.state.image} onChange={this.onChangeImage} placeholder="Enter URL of recipe display image"/>
         </Form.Group>
-
-        <Form.Group controlId="Name">
-          <Form.Label>Roll No</Form.Label>
-          <Form.Control type="text" value={this.state.rollno} onChange={this.onChangeRecipeRollno} />
+        {/* duration */}
+        <Form.Group controlId="duration">
+          <Form.Label>Cooking Duration</Form.Label>
+          <Form.Control type="range" value={this.state.duration} onChange={this.onChangeDuration} />
         </Form.Group>
-
+        {/* type */}
+        <Form.Group controlId="type">
+          <Form.Label>Type</Form.Label>
+          <Form.Control as="select"  value={this.state.type} onChange={this.onChangeType}>
+            <option>Breakfast</option>
+            <option>Meals</option>
+            <option>Snacks</option>
+            <option>Soups</option>
+            <option>Desserts</option>
+            <option>Salads</option>
+            <option>Dinner</option>
+            <option>Smoothies</option>
+          </Form.Control>
+        </Form.Group>
+        {/* difficulty */}
+        <Form.Group controlId="difficulty">
+          <Form.Label>Difficulty Level</Form.Label>
+          <Form.Control as="select" value={this.state.difficulty} onChange={this.onChangeDifficulty} >
+            <option>Easy</option>
+            <option>Medium</option>
+            <option>Hard</option>
+            <option>Masterchef</option>
+          </Form.Control>
+        </Form.Group>
+        {/* ingredients */}
+        <Form.Group controlId="ingredients">
+          <Form.Label>Ingredients</Form.Label>
+          <Form.Control type="textarea" value={this.state.ingredients} onChange={this.onChangeIngredients} placeholder="List down ingredients"/>
+        </Form.Group>
+        {/* instructions */}
+        <Form.Group controlId="instructions">
+          <Form.Label>Instructions</Form.Label>
+          <Form.Control type="textarea" value={this.state.instructions} onChange={this.onChangeInstructions} placeholder="Describe instructions"/>
+        </Form.Group>
+        {/* submit */}
         <Button variant="danger" size="lg" block="block" type="submit">
           Update Recipe
         </Button>

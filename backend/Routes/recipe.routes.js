@@ -29,7 +29,7 @@ router.route('/').get((req, res) => {
 })
 
 // Get Single Recipe
-router.route('/read-recipe/:id').get((req, res) => {
+router.route('/read-recipe/:id').get((req, res, next) => {
   recipeSchema.findById(req.params.id, (error, data) => {
     if (error) {
       return next(error)
@@ -46,8 +46,8 @@ router.route('/update-recipe/:id').put((req, res, next) => {
     $set: req.body
   }, (error, data) => {
     if (error) {
-      return next(error);
       console.log(error)
+      return next(error);
     } else {
       res.json(data)
       console.log('Recipe updated successfully !')

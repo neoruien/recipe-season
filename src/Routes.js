@@ -36,21 +36,8 @@ export default function Routes() {
         <Route exact path='/' component={HomePage} />
         <Route path="/create-recipe" component={CreateRecipePage} />
         <Route path="/read-recipe/:id" component={ReadRecipePage} />
-        <Route path="/update-recipe" component={UpdateRecipePage} />
+        <Route path="/update-recipe/:id" component={UpdateRecipePage} />
       </Switch>
   </Router>
-    // <Router>
-    //   <Switch>
-    //     <Route exact path="/">
-    //       <HomePage />
-    //     </Route>
-    //     <Route path="/create">
-    //       <CreateRecipePage />
-    //     </Route>
-    //     <Route path="/edit">
-    //       <EditRecipePage />
-    //     </Route>
-    //   </Switch>
-    // </Router>
   );
 }
