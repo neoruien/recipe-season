@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 
 export default class CreateRecipePage extends Component {
   constructor(props) {
@@ -62,6 +63,17 @@ export default class CreateRecipePage extends Component {
     console.log(`Difficulty: ${this.state.difficulty}`);
     console.log(`Ingredients: ${this.state.ingredients}`);
     console.log(`Instructions: ${this.state.instructions}`);
+    const recipeObject = {
+      title: this.state.title,
+      image: this.state.image,
+      duration: this.state.duration,
+      type: this.state.type,
+      difficulty: this.state.difficulty,
+      ingredients: this.state.ingredients,
+      instructions: this.state.instructions
+    };
+    axios.post('http://localhost:4000/recipes/create-recipe', recipeObject)
+      .then(res => console.log(res.data));
     this.setState({
       title: '',
       image: '',
