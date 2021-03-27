@@ -10,10 +10,10 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import HomePage from './HomePage';
-import CreateRecipePage from './CreateRecipePage';
-import ReadRecipePage from './ReadRecipePage';
-import UpdateRecipePage from "./UpdateRecipePage";
+import HomePage from './pages/HomePage';
+import CreateRecipePage from './pages/CreateRecipePage';
+import ReadRecipePage from './pages/ReadRecipePage';
+import UpdateRecipePage from './pages/UpdateRecipePage';
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).

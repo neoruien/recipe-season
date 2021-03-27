@@ -29,7 +29,7 @@ router.route('/').get((req, res) => {
 })
 
 // Get Single Recipe
-router.route('/edit-recipe/:id').get((req, res) => {
+router.route('/read-recipe/:id').get((req, res) => {
   recipeSchema.findById(req.params.id, (error, data) => {
     if (error) {
       return next(error)

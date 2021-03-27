@@ -1,5 +1,5 @@
 import './App.css';
-import Routes from './components/Routes';
+import Routes from './Routes';
 
 const createError = require('http-errors');
 

@@ -54,15 +54,8 @@ export default class CreateRecipePage extends Component {
   }
 
   onSubmit = e => {
-    e.preventDefault()
-    console.log('Recipe created');
-    console.log(`Title: ${this.state.title}`);
-    console.log(`Image: ${this.state.image}`);
-    console.log(`Duration: ${this.state.duration}`);
-    console.log(`Type: ${this.state.type}`);
-    console.log(`Difficulty: ${this.state.difficulty}`);
-    console.log(`Ingredients: ${this.state.ingredients}`);
-    console.log(`Instructions: ${this.state.instructions}`);
+    e.preventDefault();
+
     const recipeObject = {
       title: this.state.title,
       image: this.state.image,
@@ -72,8 +65,10 @@ export default class CreateRecipePage extends Component {
       ingredients: this.state.ingredients,
       instructions: this.state.instructions
     };
+
     axios.post('http://localhost:4000/recipes/create-recipe', recipeObject)
       .then(res => console.log(res.data));
+      
     this.setState({
       title: '',
       image: '',
